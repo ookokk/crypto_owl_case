@@ -1,7 +1,22 @@
+import 'package:crypto_owl/src/feature/crypto_currency/view/crypto_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:http/http.dart' as http;
+
+import 'feature/crypto_currency/bloc/crypto_bloc.dart';
+import 'feature/crypto_currency/repository/crypto_repository.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    BlocProvider(
+      create: (context) {
+        final cryptoRepository =
+            CryptoRepositoryImpl(httpClient: http.Client());
+        return CryptoBloc(cryptoRepository);
+      },
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -9,6 +24,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp();
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: CryptoPage(),
+    );
   }
 }

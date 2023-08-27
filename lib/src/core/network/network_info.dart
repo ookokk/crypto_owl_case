@@ -24,8 +24,5 @@ void main() async {
 
   final isConnected = await networkInfo.isConnected;
   if (isConnected) {
-    print('Internet connection is available.');
-  } else {
-    print('No internet connection.');
-  }
+  } else {}
 }
