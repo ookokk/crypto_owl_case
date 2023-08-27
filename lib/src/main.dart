@@ -14,7 +14,7 @@ void main() {
             CryptoRepositoryImpl(httpClient: http.Client());
         return CryptoBloc(cryptoRepository);
       },
-      child: MyApp(),
+      child: const MyApp(),
     ),
   );
 }

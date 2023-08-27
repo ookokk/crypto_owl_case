@@ -10,6 +10,7 @@ abstract class CryptoRepository {
 class CryptoRepositoryImpl implements CryptoRepository {
   final http.Client httpClient;
   CryptoRepositoryImpl({required this.httpClient});
+
   @override
   Future<List<Data>> getCryptoCurrencies() async {
     try {
@@ -17,6 +18,7 @@ class CryptoRepositoryImpl implements CryptoRepository {
       if (response.statusCode == 200) {
         final jsonBody = json.decode(response.body);
         final cryptoList = jsonBody['data'] as List;
+        print(cryptoList);
         return cryptoList
             .map((cryptoJson) => Data.fromJson(cryptoJson))
             .toList();
