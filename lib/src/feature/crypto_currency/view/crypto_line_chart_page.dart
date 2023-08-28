@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:crypto_owl/src/feature/crypto_currency/model/crypto_currency.dart'; // CryptoCurrency ve Data sınıflarınızın import edildiğinden emin olun
 
-class CryptoChartPage extends StatelessWidget {
+class CryptoLineChartPage extends StatelessWidget {
   final List<Data> cryptoCurrencies;
 
-  CryptoChartPage({required this.cryptoCurrencies, Key? key}) : super(key: key);
+  CryptoLineChartPage({required this.cryptoCurrencies, Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +30,7 @@ class CryptoChartPage extends StatelessWidget {
                   return FlSpot(entry.key.toDouble(), y);
                 }).toList(),
                 isCurved: true,
-                color: Colors.grey,
+                color: const Color(0xff183D3D),
                 dotData: const FlDotData(show: false),
               ),
             ],

@@ -1,4 +1,5 @@
-import 'package:crypto_owl/src/feature/crypto_currency/view/crypto_chart_page.dart';
+import 'package:crypto_owl/src/feature/crypto_currency/view/crypto_bar_chart_page.dart';
+import 'package:crypto_owl/src/feature/crypto_currency/view/crypto_line_chart_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,7 +16,7 @@ class CryptoPage extends StatelessWidget {
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         backgroundColor: const Color(0xffF5F5F5),
         body: DefaultTabController(
-          length: 2,
+          length: 3,
           child: Column(
             children: [
               buildTabBarItems(),
@@ -23,7 +24,10 @@ class CryptoPage extends StatelessWidget {
                 child: TabBarView(
                   children: [
                     buildListViewBuilder(),
-                    CryptoChartPage(
+                    CryptoLineChartPage(
+                      cryptoCurrencies: getCryptoCurrenciesFromState(context),
+                    ),
+                    CryptoBarChartPage(
                       cryptoCurrencies: getCryptoCurrenciesFromState(context),
                     ),
                   ],
@@ -44,7 +48,7 @@ class CryptoPage extends StatelessWidget {
       },
       style: ElevatedButton.styleFrom(
         foregroundColor: Colors.white,
-        backgroundColor: Color(0xff183D3D),
+        backgroundColor: const Color(0xff183D3D),
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30.0),
@@ -72,11 +76,18 @@ class CryptoPage extends StatelessWidget {
             text: 'List'),
         Tab(
             icon: Icon(
+              CupertinoIcons.graph_square,
+              color: Colors.black,
+              size: 30,
+            ),
+            text: 'Line Chart'),
+        Tab(
+            icon: Icon(
               CupertinoIcons.chart_bar_alt_fill,
               color: Colors.black,
               size: 30,
             ),
-            text: 'Chart'),
+            text: 'Bar Chart'),
       ],
     );
   }

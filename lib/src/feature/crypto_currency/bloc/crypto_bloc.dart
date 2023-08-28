@@ -3,9 +3,6 @@ import 'package:crypto_owl/src/feature/crypto_currency/repository/crypto_reposit
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-/*part 'crypto_event.dart';
-part 'crypto_state.dart';*/
-
 class CryptoBloc extends Bloc<CryptoEvent, CryptoState> {
   final CryptoRepository cryptoRepository;
 
