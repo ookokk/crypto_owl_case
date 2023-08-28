@@ -48,4 +48,13 @@ class Data {
   String toString() {
     return 'Data(id: $id, rank: $rank, symbol: $symbol, name: $name, supply: $supply, maxSupply: $maxSupply, marketCapUsd: $marketCapUsd, volumeUsd24Hr: $volumeUsd24Hr, priceUsd: $priceUsd, changePercent24Hr: $changePercent24Hr, vwap24Hr: $vwap24Hr, explorer: $explorer)';
   }
+
+  String formatChangePercent(String? changePercent24Hr) {
+    if (changePercent24Hr != null) {
+      double changePercent = double.parse(changePercent24Hr);
+      String formattedChange = changePercent.toStringAsFixed(3);
+      return "$formattedChange%";
+    }
+    return "";
+  }
 }

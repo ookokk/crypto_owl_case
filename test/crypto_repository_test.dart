@@ -1,8 +1,8 @@
 import 'dart:convert';
+import 'package:crypto_owl/src/constants/app_string.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:http/http.dart' as http;
-import 'package:crypto_owl/constants/app_string.dart';
 import 'package:crypto_owl/src/feature/crypto_currency/repository/crypto_repository.dart';
 import 'package:crypto_owl/src/feature/crypto_currency/model/crypto_currency.dart';
 

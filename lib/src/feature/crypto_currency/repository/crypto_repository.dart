@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:crypto_owl/constants/app_string.dart';
+import 'package:crypto_owl/src/constants/app_string.dart';
 import 'package:crypto_owl/src/feature/crypto_currency/model/crypto_currency.dart';
 import 'package:http/http.dart' as http;
 
