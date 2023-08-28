@@ -31,6 +31,7 @@ dependencies:
   either_dart: ^1.0.0
   #remote API
   #test
+  bloc_test: ^9.1.4
 
   #locale cache
   shared_preferences: ^2.2.0

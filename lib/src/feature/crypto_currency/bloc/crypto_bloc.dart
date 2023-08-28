@@ -12,6 +12,7 @@ class CryptoBloc extends Bloc<CryptoEvent, CryptoState> {
   CryptoBloc(this.cryptoRepository) : super(CryptoInitial()) {
     on<FetchCryptoCurrencies>((event, emit) async {
       emit(CryptoInitial());
+
       try {
         final cryptoCurrencies = await cryptoRepository.getCryptoCurrencies();
         emit(CryptoLoaded(cryptoCurrencies));
@@ -27,15 +28,6 @@ abstract class CryptoEvent extends Equatable {}
 class FetchCryptoCurrencies extends CryptoEvent {
   @override
   List<Object?> get props => [];
-}
-
-class UpdateCryptoInformation extends CryptoEvent {
-  final String cryptoId;
-
-  UpdateCryptoInformation(this.cryptoId);
-
-  @override
-  List<Object?> get props => [cryptoId];
 }
 
 abstract class CryptoState extends Equatable {}

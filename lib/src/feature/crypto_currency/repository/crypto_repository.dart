@@ -18,7 +18,6 @@ class CryptoRepositoryImpl implements CryptoRepository {
       if (response.statusCode == 200) {
         final jsonBody = json.decode(response.body);
         final cryptoList = jsonBody['data'] as List;
-        print(cryptoList);
         return cryptoList
             .map((cryptoJson) => Data.fromJson(cryptoJson))
             .toList();
