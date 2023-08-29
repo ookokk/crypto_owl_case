@@ -13,7 +13,6 @@ class CryptoPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         backgroundColor: const Color(0xffF5F5F5),
         body: DefaultTabController(
           length: 3,
@@ -36,56 +35,35 @@ class CryptoPage extends StatelessWidget {
             ],
           ),
         ),
-        //  floatingActionButton: buildFloatingElevatedButton(context),
-      ),
-    );
-  }
-
-  ElevatedButton buildFloatingElevatedButton(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {
-        context.read<CryptoBloc>().add(FetchCryptoCurrencies());
-      },
-      style: ElevatedButton.styleFrom(
-        foregroundColor: Colors.white,
-        backgroundColor: const Color(0xff183D3D),
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20.0),
-        ),
-        elevation: 5,
-      ),
-      child: const Text(
-        'Fetch Data',
-        style: TextStyle(fontSize: 20),
+        // floatingActionButton: buildFloatingElevatedButton(context),
       ),
     );
   }
 
   TabBar buildTabBarItems() {
     return const TabBar(
-      labelStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+      labelStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
       labelColor: Colors.black,
       tabs: [
         Tab(
             icon: Icon(
               CupertinoIcons.list_bullet,
               color: Colors.black,
-              size: 30,
+              size: 33,
             ),
             text: 'List'),
         Tab(
             icon: Icon(
               CupertinoIcons.graph_square,
               color: Colors.black,
-              size: 30,
+              size: 33,
             ),
             text: 'Line Chart'),
         Tab(
             icon: Icon(
               CupertinoIcons.chart_bar_alt_fill,
               color: Colors.black,
-              size: 30,
+              size: 33,
             ),
             text: 'Bar Chart'),
       ],
@@ -103,7 +81,6 @@ class CryptoPage extends StatelessWidget {
   BlocBuilder<CryptoBloc, CryptoState> buildListViewBuilder() {
     return BlocBuilder<CryptoBloc, CryptoState>(
       builder: (context, state) {
-        print("Current State: $state");
         if (state is CryptoInitial) {
           return const Center(child: Text('state is crypto initial'));
         } else if (state is CryptoLoaded) {
@@ -129,10 +106,20 @@ class CryptoPage extends StatelessWidget {
           elevation: 3,
           margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
           child: ListTile(
-            title: Text(crypto.name ?? ''),
-            subtitle: Text(crypto.symbol ?? ''),
-            trailing:
-                Text(crypto.formatChangePercent(crypto.changePercent24Hr)),
+            title: Text(
+              crypto.name ?? '',
+              style: const TextStyle(fontSize: 21, fontWeight: FontWeight.bold),
+            ),
+            subtitle: Text(
+              crypto.symbol ?? '',
+              style: const TextStyle(fontSize: 18),
+            ),
+            trailing: Text(
+              crypto.formatChangePercent(
+                crypto.changePercent24Hr,
+              ),
+              style: const TextStyle(fontSize: 20),
+            ),
           ),
         );
       },

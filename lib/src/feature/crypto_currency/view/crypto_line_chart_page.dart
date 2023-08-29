@@ -47,8 +47,7 @@ class CryptoLineChartPage extends StatelessWidget {
             child: Center(
                 child: Text(
               crypto.symbol ?? '',
-              style: const TextStyle(
-                  fontSize: 15, overflow: TextOverflow.ellipsis),
+              style: const TextStyle(fontSize: 15, overflow: TextOverflow.clip),
             )),
           );
         },
