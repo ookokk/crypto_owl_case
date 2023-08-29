@@ -11,6 +11,9 @@ class CryptoLineChartPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: const Text('Change Percent 24 Hour'),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: LineChart(

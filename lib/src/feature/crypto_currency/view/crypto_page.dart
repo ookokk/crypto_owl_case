@@ -1,4 +1,4 @@
-import 'package:crypto_owl/src/feature/crypto_currency/view/crypto_pie_chart_page.dart';
+import 'package:crypto_owl/src/feature/crypto_currency/view/crypto_bar_chart_page.dart';
 import 'package:crypto_owl/src/feature/crypto_currency/view/crypto_line_chart_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +27,7 @@ class CryptoPage extends StatelessWidget {
                     CryptoLineChartPage(
                       cryptoCurrencies: getCryptoCurrenciesFromState(context),
                     ),
-                    CryptoPieChartPage(
+                    CryptoBarChartPage(
                       cryptoCurrencies: getCryptoCurrenciesFromState(context),
                     ),
                   ],
@@ -36,7 +36,7 @@ class CryptoPage extends StatelessWidget {
             ],
           ),
         ),
-        floatingActionButton: buildFloatingElevatedButton(context),
+        //  floatingActionButton: buildFloatingElevatedButton(context),
       ),
     );
   }
