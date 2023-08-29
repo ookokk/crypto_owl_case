@@ -1,3 +1,4 @@
+import 'package:crypto_owl/src/feature/crypto_currency/widget/crypto_custom_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:crypto_owl/src/feature/crypto_currency/model/crypto_currency.dart';
@@ -11,9 +12,7 @@ class CryptoBarChartPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: const Text('Price Usd'),
-      ),
+      appBar: cryptoCustomAppBar('Price USD'),
       body: Center(
         child: BarChart(
           BarChartData(
