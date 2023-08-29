@@ -1,4 +1,4 @@
-import 'package:crypto_owl/src/feature/crypto_currency/view/crypto_bar_chart_page.dart';
+import 'package:crypto_owl/src/feature/crypto_currency/view/crypto_pie_chart_page.dart';
 import 'package:crypto_owl/src/feature/crypto_currency/view/crypto_line_chart_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +13,7 @@ class CryptoPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         backgroundColor: const Color(0xffF5F5F5),
         body: DefaultTabController(
           length: 3,
@@ -27,7 +27,7 @@ class CryptoPage extends StatelessWidget {
                     CryptoLineChartPage(
                       cryptoCurrencies: getCryptoCurrenciesFromState(context),
                     ),
-                    CryptoBarChartPage(
+                    CryptoPieChartPage(
                       cryptoCurrencies: getCryptoCurrenciesFromState(context),
                     ),
                   ],
@@ -51,7 +51,7 @@ class CryptoPage extends StatelessWidget {
         backgroundColor: const Color(0xff183D3D),
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(30.0),
+          borderRadius: BorderRadius.circular(20.0),
         ),
         elevation: 5,
       ),

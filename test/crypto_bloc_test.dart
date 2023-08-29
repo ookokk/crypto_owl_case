@@ -1,31 +1,57 @@
-import 'package:bloc_test/bloc_test.dart';
-import 'package:crypto_owl/src/feature/crypto_currency/model/crypto_currency.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mockito/mockito.dart';
 import 'package:crypto_owl/src/feature/crypto_currency/bloc/crypto_bloc.dart';
 import 'package:crypto_owl/src/feature/crypto_currency/repository/crypto_repository.dart';
-import 'package:mockito/mockito.dart';
+import 'mock_data.dart'; // Import your MockData class
 
-class MockCryptoRepository extends Mock implements CryptoRepository {
-  @override
-  Future<List<Data>> getCryptoCurrencies() {
-    // TODO: implement getCryptoCurrencies
-    throw UnimplementedError();
-  }
-}
+class MockCryptoRepository extends Mock implements CryptoRepository {}
 
 void main() {
   group('CryptoBloc', () {
-    late CryptoRepository cryptoRepository;
+    late MockCryptoRepository mockCryptoRepository;
+    late CryptoBloc cryptoBloc;
 
     setUp(() {
-      cryptoRepository = MockCryptoRepository();
+      mockCryptoRepository = MockCryptoRepository();
+      cryptoBloc = CryptoBloc(mockCryptoRepository);
     });
 
-    blocTest<CryptoBloc, CryptoState>(
-      'emits [CryptoInitial, CryptoLoaded] when FetchCryptoCurrencies is added',
-      build: () => CryptoBloc(cryptoRepository),
-      act: (bloc) => bloc.add(FetchCryptoCurrencies()),
-      expect: () => [CryptoInitial(), CryptoLoaded(const [])],
-    );
+    test('initial state is correct', () {
+      expect(cryptoBloc.state, CryptoInitial());
+    });
+
+    test('crytpo loaded testi return value=api datalari', () async {
+      final cryptoCurrencies = [
+        MockData.mockData1,
+        MockData.mockData2,
+      ];
+
+      when(mockCryptoRepository.getCryptoCurrencies())
+          .thenReturn(Future.value(cryptoCurrencies));
+
+      cryptoBloc.add(FetchCryptoCurrencies());
+
+      await expectLater(
+        cryptoBloc.stream,
+        emitsInOrder([
+          CryptoInitial(),
+          CryptoLoaded(cryptoCurrencies),
+        ]),
+      );
+    });
+
+    test('emits CryptoError when data fetching fails', () {
+      when(mockCryptoRepository.getCryptoCurrencies())
+          .thenThrow(Exception('Error fetching data'));
+
+      final expectedStates = [
+        CryptoInitial(),
+        CryptoError('Error fetching crypto currencies'),
+      ];
+
+      expectLater(cryptoBloc.stream, emitsInOrder(expectedStates));
+
+      cryptoBloc.add(FetchCryptoCurrencies());
+    });
   });
 }

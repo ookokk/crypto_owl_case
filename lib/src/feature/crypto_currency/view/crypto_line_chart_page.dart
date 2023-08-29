@@ -5,7 +5,7 @@ import 'package:crypto_owl/src/feature/crypto_currency/model/crypto_currency.dar
 class CryptoLineChartPage extends StatelessWidget {
   final List<Data> cryptoCurrencies;
 
-  CryptoLineChartPage({required this.cryptoCurrencies, Key? key})
+  const CryptoLineChartPage({required this.cryptoCurrencies, Key? key})
       : super(key: key);
 
   @override
@@ -19,7 +19,7 @@ class CryptoLineChartPage extends StatelessWidget {
             titlesData: const FlTitlesData(show: false),
             borderData: FlBorderData(show: false),
             minX: 0,
-            maxX: cryptoCurrencies.length.toDouble() - 1,
+            maxX: cryptoCurrencies.length.toDouble() - 50,
             minY: -2,
             maxY: 2,
             lineBarsData: [
