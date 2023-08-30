@@ -31,7 +31,7 @@ migrate_working_dir/
 .pub-cache/
 .pub/
 /build/
-/lib/src/constants/app_string.dart
+crypto_owl_case/lib/src/constants/app_string.dart
 
 # Symbolication related
 app.*.symbols
