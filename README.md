@@ -1,11 +1,3 @@
-# crypto_owl
-
-A new Flutter project.
-
-## Getting Started
-
-
-
-![Screenshot 2023-09-07 155639](https://github.com/ookokk/crypto_owl_case/assets/114760131/87d4f49b-25c5-41a2-86ca-0d7c34a03470)
-![Screenshot 2023-09-07 155734](https://github.com/ookokk/crypto_owl_case/assets/114760131/7edcd92e-b844-4f23-abc3-e3f2fd41c81e)
-![Screenshot 2023-09-07 155717](https://github.com/ookokk/crypto_owl_case/assets/114760131/23491b85-0374-4f49-8962-678432d26b02)
+![Screenshot 2023-09-07 155639](https://github.com/ookokk/crypto_owl_case/assets/114760131/7d406fa0-81fb-41c5-b986-5155c3127756)
+![Screenshot 2023-09-07 155734](https://github.com/ookokk/crypto_owl_case/assets/114760131/9556e6d3-70e3-4d71-9aae-22453cc19f37)
+![Screenshot 2023-09-07 155717](https://github.com/ookokk/crypto_owl_case/assets/114760131/d283768b-29b8-4ae5-81c4-8dd14e6968fd)
